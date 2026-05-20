@@ -138,7 +138,16 @@ export default async function WelcomePage({
         >
           Atrium
         </Link>
-        <div className="label-mute">First login &middot; orientation</div>
+        <div className="flex items-center gap-5">
+          <span className="label-mute hidden sm:inline">First login &middot; orientation</span>
+          <span className="h-4 w-px bg-rule hidden sm:inline-block" aria-hidden />
+          <Link
+            href="/portal/mendoza"
+            className="text-[10px] uppercase tracking-[0.22em] text-mute hover:text-paper hover:bg-ink border border-rule hover:border-ink px-3.5 py-2 transition-all duration-150"
+          >
+            Skip onboarding &rarr;
+          </Link>
+        </div>
       </header>
 
       <main className="flex-1 flex">
@@ -180,7 +189,14 @@ export default async function WelcomePage({
 
           <div className="mt-12 pt-7 border-t border-rule-soft text-[10.5px] text-mute leading-[1.6] font-mono">
             <div className="label-mute mb-2 font-sans">For prospective principals</div>
-            This walkthrough is what we show you on first login after install. Skip ahead to the dashboard at any time.
+            This walkthrough is what we show you on first login after install.{" "}
+            <Link
+              href="/portal/mendoza"
+              className="text-copper border-b border-dotted border-copper hover:bg-copper hover:text-paper transition-colors duration-150"
+            >
+              Skip ahead to the dashboard
+            </Link>{" "}
+            at any time.
           </div>
         </aside>
 
