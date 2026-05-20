@@ -19,43 +19,31 @@ export default function Landing() {
 }
 
 /* ──────────────────────────────────────────────────────────────
-   WHY NOW (small closer)
+   Layout primitive — a centered, responsively-padded column.
+   Everything anchors on the viewport centerline: text columns get
+   symmetric margins, wider blocks break out but stay centered.
+
+   width: "text" 720 · "mid" 880 · "wide" 1040
    ────────────────────────────────────────────────────────────── */
-function WhyNow() {
+function Block({
+  children,
+  width = "text",
+  className = "",
+}: {
+  children: React.ReactNode;
+  width?: "text" | "mid" | "wide";
+  className?: string;
+}) {
+  const w =
+    width === "wide"
+      ? "max-w-[1040px]"
+      : width === "mid"
+        ? "max-w-[880px]"
+        : "max-w-[720px]";
   return (
-    <section className="bg-paper px-12 py-20 border-t border-rule-soft">
-      <div className="max-w-[860px]">
-        <div className="label">Why now</div>
-        <h2 className="mt-4 font-display text-[36px] leading-[1.08] tracking-[-0.01em] font-normal text-ink max-w-[700px]">
-          The window is open.
-        </h2>
-
-        <ul className="mt-10 space-y-7 text-[16px] leading-[1.6] text-ink max-w-[760px]">
-          <li className="flex gap-4">
-            <span className="text-copper pt-1">&mdash;</span>
-            <span>
-              <strong className="text-ink">The technology matured.</strong> The AI behind the system became reliable enough to read your documents and write your briefings in 2025. It wasn&rsquo;t before.
-            </span>
-          </li>
-          <li className="flex gap-4">
-            <span className="text-copper pt-1">&mdash;</span>
-            <span>
-              <strong className="text-ink">Off-the-shelf AI has disappointed everyone at your level.</strong> The principals we speak with have already tried ChatGPT for the family office and found it generic. That scar tissue is universal.
-            </span>
-          </li>
-          <li className="flex gap-4">
-            <span className="text-copper pt-1">&mdash;</span>
-            <span>
-              <strong className="text-ink">You can&rsquo;t be wrong.</strong> The wiki is plain text in a private archive your family owns. If Atrium ever stops working for you, the archive is still yours. The cost of trying us is the diagnostic. Nothing more.
-            </span>
-          </li>
-        </ul>
-
-        <p className="mt-12 font-display italic text-[14px] text-mute max-w-[640px]">
-          The next two years define what executive AI for family enterprises looks like. Be early.
-        </p>
-      </div>
-    </section>
+    <div className={`mx-auto w-full ${w} px-6 sm:px-10 ${className}`}>
+      {children}
+    </div>
   );
 }
 
@@ -64,26 +52,26 @@ function WhyNow() {
    ────────────────────────────────────────────────────────────── */
 function Hero() {
   return (
-    <section className="bg-paper px-12 pt-20 pb-28">
-      <div className="max-w-[1100px]">
-        <h1 className="font-display text-[120px] leading-[0.95] tracking-[-0.015em] font-normal text-ink">
+    <section className="bg-paper pt-14 pb-20 sm:pt-20 sm:pb-28">
+      <Block width="text">
+        <h1 className="font-display text-[68px] sm:text-[96px] lg:text-[112px] leading-[0.95] tracking-[-0.015em] font-normal text-ink">
           Atrium
         </h1>
-        <div className="mt-7 h-px w-20 bg-copper" />
-        <p className="mt-8 font-display italic text-[26px] leading-[1.35] text-ink-soft max-w-[600px]">
+        <div className="mt-6 sm:mt-7 h-px w-20 bg-copper" />
+        <p className="mt-7 sm:mt-8 font-display italic text-[22px] sm:text-[25px] lg:text-[26px] leading-[1.35] text-ink-soft">
           Where your company remembers.
         </p>
 
-        <p className="mt-9 text-[17px] leading-[1.65] text-ink-soft max-w-[600px]">
+        <p className="mt-7 sm:mt-9 text-[16px] sm:text-[17px] leading-[1.65] text-ink-soft">
           A private team that builds and keeps a living record of your family&rsquo;s business — answering your questions in your own words, with sources on every claim. You read and ask. We do the rest.
         </p>
 
-        <div className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] tracking-[0.22em] uppercase">
+        <div className="mt-10 sm:mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] tracking-[0.22em] uppercase">
           <span className="text-copper">AI for the executive layer</span>
           <span className="text-mute-soft">·</span>
           <span className="text-mute">A private practice · Manila</span>
         </div>
-      </div>
+      </Block>
     </section>
   );
 }
@@ -93,14 +81,14 @@ function Hero() {
    ────────────────────────────────────────────────────────────── */
 function Diagnosis() {
   return (
-    <section className="bg-paper px-12 py-20 border-t border-rule">
-      <div className="max-w-[820px]">
+    <section className="bg-paper py-16 sm:py-20 border-t border-rule">
+      <Block width="text">
         <div className="label">The diagnosis</div>
-        <h2 className="mt-4 font-display text-[42px] leading-[1.06] tracking-[-0.01em] font-normal text-ink max-w-[760px]">
+        <h2 className="mt-4 font-display text-[30px] sm:text-[38px] lg:text-[42px] leading-[1.08] tracking-[-0.01em] font-normal text-ink">
           ChatGPT works for your team. It doesn&rsquo;t work for you.
         </h2>
 
-        <div className="mt-8 space-y-5 text-[16px] leading-[1.75] text-ink-soft max-w-[720px]">
+        <div className="mt-8 space-y-5 text-[16px] leading-[1.75] text-ink-soft">
           <p>
             Your team uses AI to do less typing. Calls get summarized. Invoices get read. Tickets get sorted. That side of AI is measurably better than it was last year.
           </p>
@@ -111,29 +99,41 @@ function Diagnosis() {
             That isn&rsquo;t a bad prompt. The problem is the tool is pointed in the wrong direction.
           </p>
         </div>
+      </Block>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1 max-w-[760px]">
+      <Block width="mid" className="mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
           <div className="border-t border-ink pt-4">
             <div className="label">What your team&rsquo;s AI does</div>
-            <div className="mt-2 font-display text-[22px] tracking-[-0.005em] text-ink">Turns words into data.</div>
-            <p className="mt-2 text-[13px] text-mute">Calls, emails, receipts &rarr; rows in a spreadsheet.</p>
+            <div className="mt-2 font-display text-[20px] sm:text-[22px] tracking-[-0.005em] text-ink">
+              Turns words into data.
+            </div>
+            <p className="mt-2 text-[13px] text-mute">
+              Calls, emails, receipts &rarr; rows in a spreadsheet.
+            </p>
           </div>
           <div className="border-t border-ink pt-4">
             <div className="label">What you need</div>
-            <div className="mt-2 font-display text-[22px] tracking-[-0.005em] text-ink">Turns data into a story.</div>
-            <p className="mt-2 text-[13px] text-mute">Reports, statements, memos &rarr; a one-page answer.</p>
+            <div className="mt-2 font-display text-[20px] sm:text-[22px] tracking-[-0.005em] text-ink">
+              Turns data into a story.
+            </div>
+            <p className="mt-2 text-[13px] text-mute">
+              Reports, statements, memos &rarr; a one-page answer.
+            </p>
           </div>
         </div>
+      </Block>
 
-        <p className="mt-7 font-display italic text-[15px] text-mute max-w-[640px]">
+      <Block width="text" className="mt-8">
+        <p className="font-display italic text-[15px] text-mute">
           Same technology. Opposite direction. Off-the-shelf AI is built for the first; you need the second.
         </p>
 
-        <blockquote className="pull mt-12 max-w-[700px]">
+        <blockquote className="pull mt-9">
           This isn&rsquo;t a bug anyone can fix with a better prompt. It is the shape of the tool, pointed the wrong way.
         </blockquote>
 
-        <div className="mt-10 text-[12px] text-mute tracking-[0.02em]">
+        <div className="mt-9 text-[12px] text-mute tracking-[0.02em]">
           <Link
             href="/diagnosis"
             className="text-copper border-b border-dotted border-copper hover:bg-copper hover:text-paper px-1 py-0.5 transition-colors duration-150"
@@ -141,7 +141,7 @@ function Diagnosis() {
             The longer version &rarr;
           </Link>
         </div>
-      </div>
+      </Block>
     </section>
   );
 }
@@ -151,14 +151,14 @@ function Diagnosis() {
    ────────────────────────────────────────────────────────────── */
 function Cost() {
   return (
-    <section className="bg-paper-soft px-12 py-20">
-      <div className="max-w-[820px]">
+    <section className="bg-paper-soft py-16 sm:py-20">
+      <Block width="text">
         <div className="label">What it costs to do nothing</div>
-        <h2 className="mt-4 font-display text-[36px] leading-[1.08] tracking-[-0.01em] font-normal text-ink max-w-[760px]">
+        <h2 className="mt-4 font-display text-[28px] sm:text-[34px] lg:text-[36px] leading-[1.1] tracking-[-0.01em] font-normal text-ink">
           You are already paying for this. You just can&rsquo;t see the bill.
         </h2>
 
-        <ul className="mt-10 space-y-5 text-[16px] leading-[1.6] text-ink max-w-[760px]">
+        <ul className="mt-9 space-y-5 text-[16px] leading-[1.6] text-ink">
           <li className="flex gap-4">
             <span className="text-copper pt-1">&mdash;</span>
             When your most trusted advisor retires, half of what your family knows about its own money walks out with him.
@@ -177,10 +177,10 @@ function Cost() {
           </li>
         </ul>
 
-        <p className="mt-9 font-display italic text-[14px] text-mute max-w-[640px]">
+        <p className="mt-9 font-display italic text-[14px] text-mute">
           You pay these costs every quarter. They are invisible because they are normal.
         </p>
-      </div>
+      </Block>
     </section>
   );
 }
@@ -214,52 +214,62 @@ function Answer() {
   ];
 
   return (
-    <section className="bg-ink text-paper px-12 py-24">
-      <div className="max-w-[1000px]">
-        <div className="label" style={{ color: "#C98859" }}>The answer</div>
-        <h2 className="mt-4 font-display text-[48px] leading-[1.06] tracking-[-0.015em] font-normal text-paper max-w-[820px]">
+    <section className="bg-ink text-paper py-18 sm:py-24">
+      <Block width="text">
+        <div className="label" style={{ color: "#C98859" }}>
+          The answer
+        </div>
+        <h2 className="mt-4 font-display text-[32px] sm:text-[40px] lg:text-[46px] leading-[1.08] tracking-[-0.015em] font-normal text-paper">
           A memory for your family. Written and kept by people. Asked by you.
         </h2>
-        <p className="mt-7 text-[17px] leading-[1.65] text-paper-soft max-w-[720px]">
+        <p className="mt-7 text-[16px] sm:text-[17px] leading-[1.65] text-paper-soft">
           Atrium is a private wiki of your family&rsquo;s reasoning, relationships, decisions, and history. We write it. We keep it current. An AI assistant reads it alongside us so it can answer your questions in plain language &mdash; with sources on every claim.
         </p>
 
-        <p className="mt-7 font-display italic text-[20px] leading-[1.4] text-paper border-l-2 border-copper-soft pl-6 max-w-[660px]">
+        <p className="mt-7 font-display italic text-[18px] sm:text-[20px] leading-[1.4] text-paper border-l-2 border-copper-soft pl-5 sm:pl-6">
           It sits above your existing systems. It composes the story. It does not replace anything.
         </p>
+      </Block>
 
-        {/* 4-layer architecture, translated */}
-        <div className="mt-14 space-y-2 max-w-[820px]">
+      {/* 4-layer architecture */}
+      <Block width="mid" className="mt-12">
+        <div className="space-y-2">
           {layers.map((l) => (
             <div
               key={l.what}
-              className={`border px-7 py-5 ${
+              className={`border px-6 sm:px-7 py-5 ${
                 l.muted
                   ? "border-dashed border-paper-soft/30 bg-transparent"
                   : "border-paper-soft/30 bg-paper/[0.03]"
               }`}
             >
-              <div className="flex items-baseline gap-5">
-                <span className="text-[10px] tracking-[0.22em] uppercase text-copper-soft w-[170px] shrink-0">
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1.5 sm:gap-5">
+                <span className="text-[10px] tracking-[0.22em] uppercase text-copper-soft sm:w-[170px] sm:shrink-0">
                   {l.what}
                 </span>
-                <span className={`font-display text-[19px] tracking-[-0.005em] ${l.muted ? "text-paper-soft/60" : "text-paper"}`}>
+                <span
+                  className={`font-display text-[18px] sm:text-[19px] tracking-[-0.005em] ${
+                    l.muted ? "text-paper-soft/60" : "text-paper"
+                  }`}
+                >
                   {l.name}
                 </span>
               </div>
               <p
-                className="mt-1.5 text-[12.5px] leading-[1.55] text-mute-soft pl-[190px]"
+                className="mt-2 text-[12.5px] leading-[1.55] text-mute-soft sm:pl-[190px]"
                 dangerouslySetInnerHTML={{ __html: l.note }}
               />
             </div>
           ))}
         </div>
+      </Block>
 
-        <p className="mt-10 font-mono text-[11px] text-mute tracking-[0.04em] max-w-[760px]">
+      <Block width="text" className="mt-9">
+        <p className="font-mono text-[11px] text-mute tracking-[0.04em]">
           Every change recorded &middot; every claim sourced &middot; plain text your family owns
         </p>
 
-        <div className="mt-10 text-[12px] tracking-[0.02em]">
+        <div className="mt-8 text-[12px] tracking-[0.02em]">
           <Link
             href="/architecture"
             className="text-copper-soft border-b border-dotted border-copper-soft hover:text-paper hover:border-paper px-1 py-0.5 transition-colors duration-150"
@@ -267,7 +277,7 @@ function Answer() {
             How it&rsquo;s built &rarr;
           </Link>
         </div>
-      </div>
+      </Block>
     </section>
   );
 }
@@ -277,20 +287,22 @@ function Answer() {
    ────────────────────────────────────────────────────────────── */
 function Interface() {
   return (
-    <section className="bg-paper px-12 py-20">
-      <div className="max-w-[900px]">
+    <section className="bg-paper py-16 sm:py-20">
+      <Block width="text">
         <div className="label">What you see</div>
-        <h2 className="mt-4 font-display text-[36px] leading-[1.08] tracking-[-0.01em] font-normal text-ink max-w-[760px]">
+        <h2 className="mt-4 font-display text-[28px] sm:text-[34px] lg:text-[36px] leading-[1.1] tracking-[-0.01em] font-normal text-ink">
           Ask a question. Read the answer.
         </h2>
-        <p className="mt-4 font-display italic text-[15px] text-mute max-w-[640px]">
+        <p className="mt-4 font-display italic text-[15px] text-mute">
           No new app to learn. No buttons to find. Every claim links back to where it came from.
         </p>
+      </Block>
 
-        <div className="mt-12 border border-rule bg-paper-card px-9 py-8 max-w-[820px]">
-          <div className="grid grid-cols-[80px_1fr] gap-x-7 gap-y-5">
+      <Block width="mid" className="mt-10">
+        <div className="border border-rule bg-paper-card px-6 sm:px-9 py-7 sm:py-8">
+          <div className="grid grid-cols-[52px_1fr] sm:grid-cols-[80px_1fr] gap-x-5 sm:gap-x-7 gap-y-5">
             <div className="label-mute pt-1.5">You</div>
-            <p className="font-display italic text-[18px] leading-[1.45] text-ink tracking-[-0.005em]">
+            <p className="font-display italic text-[17px] sm:text-[18px] leading-[1.45] text-ink tracking-[-0.005em]">
               What is the current position across the family&rsquo;s holdings, and what needs my attention this week?
             </p>
 
@@ -301,9 +313,18 @@ function Interface() {
                 <span className="cite">Finance · 2026-05-18</span>
               </p>
               <ul className="space-y-2 text-[14px]">
-                <li>&mdash; Q2 distribution to the family trust &mdash; Friday <span className="cite">Trust · Active</span></li>
-                <li>&mdash; Next-gen council briefing &mdash; draft circulating Wed <span className="cite">Council · Open</span></li>
-                <li>&mdash; Singapore SFO license &mdash; counsel review pending <span className="cite">Legal · Blocked</span></li>
+                <li>
+                  &mdash; Q2 distribution to the family trust &mdash; Friday{" "}
+                  <span className="cite">Trust · Active</span>
+                </li>
+                <li>
+                  &mdash; Next-gen council briefing &mdash; draft circulating Wed{" "}
+                  <span className="cite">Council · Open</span>
+                </li>
+                <li>
+                  &mdash; Singapore SFO license &mdash; counsel review pending{" "}
+                  <span className="cite">Legal · Blocked</span>
+                </li>
               </ul>
               <p className="text-[11.5px] text-mute pt-3 border-t border-rule-soft">
                 Sources: custodian report &middot; trustee statement &middot; council briefing draft &middot; counsel memo
@@ -311,8 +332,10 @@ function Interface() {
             </div>
           </div>
         </div>
+      </Block>
 
-        <div className="mt-8 text-[12px] tracking-[0.02em]">
+      <Block width="text" className="mt-8">
+        <div className="text-[12px] tracking-[0.02em]">
           <Link
             href="/portal/welcome"
             className="text-copper border-b border-dotted border-copper hover:bg-copper hover:text-paper px-1 py-0.5 transition-colors duration-150"
@@ -320,7 +343,7 @@ function Interface() {
             See what your view looks like &rarr;
           </Link>
         </div>
-      </div>
+      </Block>
     </section>
   );
 }
@@ -330,14 +353,14 @@ function Interface() {
    ────────────────────────────────────────────────────────────── */
 function Generations() {
   return (
-    <section className="bg-paper-soft px-12 py-20">
-      <div className="max-w-[820px]">
+    <section className="bg-paper-soft py-16 sm:py-20">
+      <Block width="text">
         <div className="label">Why it matters across generations</div>
-        <h2 className="mt-4 font-display text-[36px] leading-[1.08] tracking-[-0.01em] font-normal text-ink max-w-[760px]">
+        <h2 className="mt-4 font-display text-[28px] sm:text-[34px] lg:text-[36px] leading-[1.1] tracking-[-0.01em] font-normal text-ink">
           Your children will inherit the assets. Will they inherit the reasoning?
         </h2>
 
-        <div className="mt-9 space-y-5 text-[16px] leading-[1.75] text-ink-soft max-w-[720px]">
+        <div className="mt-9 space-y-5 text-[16px] leading-[1.75] text-ink-soft">
           <p>
             When the founder retires, half a century of thinking usually goes with him. Why this trust and not that one. Why the family exited textiles in 1989. Why the council won&rsquo;t sell the holding company, even after three serious offers.
           </p>
@@ -349,10 +372,10 @@ function Generations() {
           </p>
         </div>
 
-        <p className="mt-9 font-display italic text-[14px] text-mute max-w-[640px]">
+        <p className="mt-9 font-display italic text-[14px] text-mute">
           Most families discover the value of this only after a generation has already moved on. Don&rsquo;t be most families.
         </p>
-      </div>
+      </Block>
     </section>
   );
 }
@@ -362,18 +385,20 @@ function Generations() {
    ────────────────────────────────────────────────────────────── */
 function Concierge() {
   return (
-    <section className="bg-paper px-12 py-20">
-      <div className="max-w-[820px]">
+    <section className="bg-paper py-16 sm:py-20">
+      <Block width="text">
         <div className="label">How it works for you</div>
-        <h2 className="mt-4 font-display text-[36px] leading-[1.08] tracking-[-0.01em] font-normal text-ink max-w-[760px]">
+        <h2 className="mt-4 font-display text-[28px] sm:text-[34px] lg:text-[36px] leading-[1.1] tracking-[-0.01em] font-normal text-ink">
           You read and ask. We do everything else.
         </h2>
 
-        <p className="mt-7 text-[16px] leading-[1.7] text-ink-soft max-w-[720px]">
+        <p className="mt-7 text-[16px] leading-[1.7] text-ink-soft">
           You will never open a terminal, install a plugin, or learn a new piece of software. There is nothing for you to set up. A small team that knows your family does the work. You read what they prepare and ask whatever you want to ask.
         </p>
+      </Block>
 
-        <div className="mt-10 grid grid-cols-3 gap-7 max-w-[760px]">
+      <Block width="mid" className="mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-7 sm:gap-x-7">
           <div className="border-t border-ink pt-4">
             <div className="label">We set it up</div>
             <p className="mt-3 text-[13px] leading-[1.55] text-ink-soft">
@@ -393,8 +418,10 @@ function Concierge() {
             </p>
           </div>
         </div>
+      </Block>
 
-        <div className="mt-10 flex flex-wrap gap-4 items-center">
+      <Block width="text" className="mt-10">
+        <div className="flex flex-wrap gap-4 items-center">
           <Link
             href="/concierge"
             className="text-[11px] uppercase tracking-[0.22em] text-paper bg-ink border border-ink px-5 py-2.5 hover:bg-copper hover:border-copper transition-all duration-150"
@@ -408,7 +435,7 @@ function Concierge() {
             Preview your view
           </Link>
         </div>
-      </div>
+      </Block>
     </section>
   );
 }
@@ -436,15 +463,17 @@ function Practice() {
   ];
 
   return (
-    <section className="bg-paper-soft px-12 py-24 border-t border-rule-soft">
-      <div className="max-w-[1000px]">
+    <section className="bg-paper-soft py-18 sm:py-24 border-t border-rule-soft">
+      <Block width="text">
         <div className="label">The practice</div>
-        <h2 className="mt-4 font-display text-[40px] leading-[1.06] tracking-[-0.01em] font-normal text-ink max-w-[760px]">
+        <h2 className="mt-4 font-display text-[30px] sm:text-[36px] lg:text-[40px] leading-[1.08] tracking-[-0.01em] font-normal text-ink">
           A one-week look. Six weeks to build. Then we stay.
         </h2>
+      </Block>
 
-        {/* Proof points — compact row */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[920px]">
+      {/* Proof points */}
+      <Block width="wide" className="mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-8">
           <Proof
             n="03"
             tag="Founder vaults"
@@ -462,24 +491,32 @@ function Practice() {
             body="A family-held consumer brand, third generation. Reports in 30, 60, and 90 days."
           />
         </div>
+      </Block>
 
-        {/* Engagement tiers */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-[1000px]">
+      {/* Engagement tiers */}
+      <Block width="wide" className="mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-9 sm:gap-x-10">
           {tiers.map((t) => (
             <div key={t.tag} className="border-t border-ink pt-4">
               <div className="label">Atrium {t.tag}</div>
-              <div className="text-[10px] uppercase tracking-[0.22em] text-mute mt-1">{t.cadence}</div>
-              <p className="mt-5 text-[13.5px] leading-[1.65] text-ink-soft">{t.body}</p>
+              <div className="text-[10px] uppercase tracking-[0.22em] text-mute mt-1">
+                {t.cadence}
+              </div>
+              <p className="mt-5 text-[13.5px] leading-[1.65] text-ink-soft">
+                {t.body}
+              </p>
             </div>
           ))}
         </div>
+      </Block>
 
-        {/* Diagnostic */}
-        <div className="mt-20 max-w-[820px] border-t border-rule pt-12">
-          <h3 className="font-display text-[26px] leading-[1.12] tracking-[-0.005em] font-normal text-ink">
+      {/* Diagnostic */}
+      <Block width="text" className="mt-16">
+        <div className="border-t border-rule pt-12">
+          <h3 className="font-display text-[24px] sm:text-[26px] leading-[1.12] tracking-[-0.005em] font-normal text-ink">
             Start with a one-week look.
           </h3>
-          <p className="mt-4 text-[15px] leading-[1.7] text-ink-soft max-w-[720px]">
+          <p className="mt-4 text-[15px] leading-[1.7] text-ink-soft">
             Five business days. We look at what your family already has, sketch how the system would be structured for you, and tell you the three things it would change first. At the end you receive a written proposal with a price.
           </p>
           <p className="mt-5 font-display italic text-[14px] text-mute">
@@ -495,7 +532,7 @@ function Practice() {
             </Link>
           </div>
         </div>
-      </div>
+      </Block>
     </section>
   );
 }
@@ -513,7 +550,9 @@ function Proof({
 }) {
   return (
     <div>
-      <div className="font-display text-[44px] tracking-[-0.015em] text-copper leading-[1]">{n}</div>
+      <div className="font-display text-[40px] sm:text-[44px] tracking-[-0.015em] text-copper leading-[1]">
+        {n}
+      </div>
       <div className="mt-3 label">{tag}</div>
       <p className="mt-3 text-[13.5px] leading-[1.65] text-ink-soft">
         {body}
@@ -534,42 +573,85 @@ function Proof({
 }
 
 /* ──────────────────────────────────────────────────────────────
-   09 — INQUIRY
+   09 — WHY NOW
+   ────────────────────────────────────────────────────────────── */
+function WhyNow() {
+  return (
+    <section className="bg-paper py-16 sm:py-20 border-t border-rule-soft">
+      <Block width="text">
+        <div className="label">Why now</div>
+        <h2 className="mt-4 font-display text-[28px] sm:text-[34px] lg:text-[36px] leading-[1.1] tracking-[-0.01em] font-normal text-ink">
+          The window is open.
+        </h2>
+
+        <ul className="mt-9 space-y-7 text-[16px] leading-[1.6] text-ink">
+          <li className="flex gap-4">
+            <span className="text-copper pt-1">&mdash;</span>
+            <span>
+              <strong className="text-ink">The technology matured.</strong> The AI behind the system became reliable enough to read your documents and write your briefings in 2025. It wasn&rsquo;t before.
+            </span>
+          </li>
+          <li className="flex gap-4">
+            <span className="text-copper pt-1">&mdash;</span>
+            <span>
+              <strong className="text-ink">Off-the-shelf AI has disappointed everyone at your level.</strong> The principals we speak with have already tried ChatGPT for the family office and found it generic. That scar tissue is universal.
+            </span>
+          </li>
+          <li className="flex gap-4">
+            <span className="text-copper pt-1">&mdash;</span>
+            <span>
+              <strong className="text-ink">You can&rsquo;t be wrong.</strong> The wiki is plain text in a private archive your family owns. If Atrium ever stops working for you, the archive is still yours. The cost of trying us is the diagnostic. Nothing more.
+            </span>
+          </li>
+        </ul>
+
+        <p className="mt-11 font-display italic text-[14px] text-mute">
+          The next two years define what executive AI for family enterprises looks like. Be early.
+        </p>
+      </Block>
+    </section>
+  );
+}
+
+/* ──────────────────────────────────────────────────────────────
+   10 — INQUIRY
    ────────────────────────────────────────────────────────────── */
 function Inquiry() {
   return (
-    <section id="inquiry" className="bg-paper px-12 py-24 border-t border-rule">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-16 max-w-[1100px]">
-        {/* The ask */}
-        <div>
-          <div className="label">The next step</div>
-          <h2 className="mt-4 font-display text-[40px] leading-[1.06] tracking-[-0.01em] font-normal text-ink max-w-[440px]">
-            A 60-minute conversation.
-          </h2>
-          <p className="mt-7 font-display italic text-[17px] leading-[1.5] text-ink-soft max-w-[440px]">
-            With the principal, an heir, or whoever runs the family office.
-          </p>
-
-          <div className="mt-10 space-y-5 text-[14.5px] leading-[1.7] text-ink-soft max-w-[440px]">
-            <p>If we fit your family, we move to the one-week look.</p>
-            <p>
-              If we don&rsquo;t, you&rsquo;ll hear that in writing &mdash; with the specific reason &mdash; so you don&rsquo;t spend another quarter looking at the wrong vendor.
+    <section id="inquiry" className="bg-paper py-18 sm:py-24 border-t border-rule">
+      <Block width="wide">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16">
+          {/* The ask */}
+          <div>
+            <div className="label">The next step</div>
+            <h2 className="mt-4 font-display text-[32px] sm:text-[38px] lg:text-[40px] leading-[1.08] tracking-[-0.01em] font-normal text-ink">
+              A 60-minute conversation.
+            </h2>
+            <p className="mt-6 font-display italic text-[17px] leading-[1.5] text-ink-soft">
+              With the principal, an heir, or whoever runs the family office.
             </p>
+
+            <div className="mt-9 space-y-5 text-[14.5px] leading-[1.7] text-ink-soft">
+              <p>If we fit your family, we move to the one-week look.</p>
+              <p>
+                If we don&rsquo;t, you&rsquo;ll hear that in writing &mdash; with the specific reason &mdash; so you don&rsquo;t spend another quarter looking at the wrong vendor.
+              </p>
+            </div>
+
+            <div className="mt-11 pt-7 border-t border-rule-soft text-[11px] text-mute tracking-[0.04em] leading-[1.7]">
+              Atrium &middot; A private practice. Manila.
+              <br />
+              <span className="text-ink-soft">By inquiry only.</span>
+            </div>
           </div>
 
-          <div className="mt-12 pt-7 border-t border-rule-soft text-[11px] text-mute tracking-[0.04em] leading-[1.7]">
-            Atrium &middot; A private practice. Manila.
-            <br />
-            <span className="text-ink-soft">By inquiry only.</span>
+          {/* The form */}
+          <div>
+            <div className="label-mute mb-7">Request a conversation</div>
+            <InquiryForm source="landing" />
           </div>
         </div>
-
-        {/* The form */}
-        <div>
-          <div className="label-mute mb-7">Request a conversation</div>
-          <InquiryForm source="landing" />
-        </div>
-      </div>
+      </Block>
     </section>
   );
 }
