@@ -25,7 +25,7 @@ export default function MendozaPortalLayout({
           principalName={PRINCIPAL.fullName}
           principalRole={PRINCIPAL.role}
         />
-        <div className="flex-1 flex">
+        <div className="flex-1 flex flex-col lg:flex-row">
           <Sidebar accountSlug={ACCOUNT.slug} />
           <main className="flex-1 min-w-0 bg-paper">{children}</main>
         </div>

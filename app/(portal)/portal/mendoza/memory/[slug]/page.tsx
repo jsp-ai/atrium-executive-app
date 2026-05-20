@@ -48,8 +48,8 @@ export default async function MendozaWikiPage({
   const catLabel = CATEGORY_LABELS[category] ?? category;
 
   return (
-    <div className="grid grid-cols-[1fr_300px] min-h-full">
-      <div className="px-12 py-12 max-w-[760px]">
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] min-h-full">
+      <div className="px-5 sm:px-10 lg:px-12 py-10 sm:py-12 max-w-[760px]">
         <Link
           href={`/portal/${ACCOUNT.slug}/memory`}
           className="text-[10px] uppercase tracking-[0.22em] text-mute hover:text-ink transition-colors duration-150"
@@ -58,7 +58,7 @@ export default async function MendozaWikiPage({
         </Link>
 
         <div className="mt-10 label">{catLabel}</div>
-        <h1 className="mt-3 font-display text-[36px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
+        <h1 className="mt-3 font-display text-[30px] sm:text-[36px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
           {title}
         </h1>
 
@@ -109,7 +109,7 @@ export default async function MendozaWikiPage({
         </div>
       </div>
 
-      <aside className="border-l border-rule-soft bg-paper-soft px-7 py-12 text-[12px]">
+      <aside className="border-t lg:border-t-0 lg:border-l border-rule-soft bg-paper-soft px-5 sm:px-7 py-10 lg:py-12 text-[12px]">
         <div className="label-mute">Frontmatter</div>
         <dl className="mt-4 space-y-3 font-mono">
           {frontmatter.created && (

@@ -29,16 +29,19 @@ export default function FilesList({
         {files.map((f) => (
           <li
             key={f.id}
-            className="grid grid-cols-[1fr_120px_140px_140px] gap-6 py-5 items-baseline"
+            className="grid grid-cols-[1fr_120px] sm:grid-cols-[1fr_110px_130px_130px] gap-x-5 sm:gap-x-6 py-5 items-baseline"
           >
             <button
               onClick={() => setOpen(f)}
               className="font-display text-[15px] tracking-[-0.005em] text-ink text-left hover:text-copper transition-colors duration-150"
             >
               {f.name}
+              <span className="block sm:hidden mt-1 font-sans text-[11px] font-mono text-mute">
+                {f.size} &middot; {f.uploaded}
+              </span>
             </button>
-            <div className="font-mono text-[12px] text-ink-soft">{f.size}</div>
-            <div className="font-mono text-[12px] text-mute">{f.uploaded}</div>
+            <div className="hidden sm:block font-mono text-[12px] text-ink-soft">{f.size}</div>
+            <div className="hidden sm:block font-mono text-[12px] text-mute">{f.uploaded}</div>
             <div className="text-right">
               <button
                 onClick={() => setOpen(f)}

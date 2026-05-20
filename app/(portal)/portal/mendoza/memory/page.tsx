@@ -33,9 +33,9 @@ export default function MemoryIndex() {
   const resolutions = allPages.filter((p) => p.frontmatter.entity === "Council Resolution").length;
 
   return (
-    <div className="grid grid-cols-[260px_1fr] gap-0 min-h-full">
-      {/* Tree column */}
-      <aside className="border-r border-rule-soft bg-paper-soft px-7 py-10">
+    <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-0 min-h-full">
+      {/* Tree column — below the body on mobile */}
+      <aside className="order-2 lg:order-1 border-t lg:border-t-0 lg:border-r border-rule-soft bg-paper-soft px-5 sm:px-7 py-9 sm:py-10">
         <div className="label">Memory</div>
         <p className="mt-3 text-[12px] leading-[1.55] text-mute font-display italic">
           Your family&rsquo;s plain-text wiki. Read freely. Suggest edits to your concierge.
@@ -79,9 +79,9 @@ export default function MemoryIndex() {
       </aside>
 
       {/* Body */}
-      <div className="px-12 py-12 max-w-[760px]">
+      <div className="order-1 lg:order-2 px-5 sm:px-10 lg:px-12 py-10 sm:py-12 max-w-[760px]">
         <div className="label">Memory</div>
-        <h1 className="mt-3 font-display text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
+        <h1 className="mt-3 font-display text-[30px] sm:text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
           The Mendoza family wiki.
         </h1>
         <p className="mt-4 font-display italic text-[16px] leading-[1.55] text-ink-soft max-w-[640px]">
@@ -104,16 +104,18 @@ export default function MemoryIndex() {
               <li key={p.slug}>
                 <Link
                   href={`/portal/${ACCOUNT.slug}/memory/${p.name}`}
-                  className="group flex items-baseline gap-5"
+                  className="group block sm:flex sm:items-baseline sm:gap-5"
                 >
-                  <span className="font-mono text-[11px] text-mute-soft w-[90px] shrink-0">
-                    {formatDate(p.frontmatter.updated)}
-                  </span>
-                  <span className="text-[10px] tracking-[0.18em] uppercase text-mute w-[120px] shrink-0">
-                    {CATEGORY_LABELS[p.category] ?? p.category}
-                  </span>
-                  <span className="font-display text-[16px] tracking-[-0.005em] text-ink group-hover:text-copper transition-colors duration-150">
+                  <span className="font-display text-[16px] tracking-[-0.005em] text-ink group-hover:text-copper transition-colors duration-150 sm:order-3">
                     {p.title}
+                  </span>
+                  <span className="mt-1 sm:mt-0 flex items-baseline gap-4 sm:contents">
+                    <span className="font-mono text-[11px] text-mute-soft sm:order-1 sm:w-[90px] sm:shrink-0">
+                      {formatDate(p.frontmatter.updated)}
+                    </span>
+                    <span className="text-[10px] tracking-[0.18em] uppercase text-mute sm:order-2 sm:w-[120px] sm:shrink-0">
+                      {CATEGORY_LABELS[p.category] ?? p.category}
+                    </span>
                   </span>
                 </Link>
               </li>

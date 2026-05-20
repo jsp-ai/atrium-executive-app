@@ -3,9 +3,9 @@ import ActivityFilter from "@/components/portal/ActivityFilter";
 
 export default function Activity() {
   return (
-    <div className="px-12 py-12 max-w-[1000px]">
+    <div className="px-5 sm:px-10 lg:px-12 py-10 sm:py-12 max-w-[1000px]">
       <div className="label">Stewardship &middot; Activity</div>
-      <h1 className="mt-3 font-display text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
+      <h1 className="mt-3 font-display text-[30px] sm:text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
         Every change a signed commit.
       </h1>
       <p className="mt-4 font-display italic text-[16px] leading-[1.55] text-ink-soft max-w-[640px]">

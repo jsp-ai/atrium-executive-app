@@ -131,7 +131,7 @@ export default async function WelcomePage({
 
   return (
     <div className="min-h-screen flex flex-col bg-paper">
-      <header className="px-9 h-[68px] border-b border-rule-soft bg-paper flex items-center justify-between">
+      <header className="px-5 sm:px-9 h-[68px] border-b border-rule-soft bg-paper flex items-center justify-between">
         <Link
           href="/"
           className="font-display text-[19px] tracking-[0.02em] text-ink hover:text-copper transition-colors duration-150"
@@ -151,8 +151,9 @@ export default async function WelcomePage({
       </header>
 
       <main className="flex-1 flex">
-        {/* Step rail */}
-        <aside className="w-[280px] shrink-0 border-r border-rule-soft bg-paper-soft px-8 py-12">
+        {/* Step rail — desktop only; on mobile the body's own "Step X of 6"
+            and the prev/next controls carry navigation */}
+        <aside className="hidden lg:block w-[280px] shrink-0 border-r border-rule-soft bg-paper-soft px-8 py-12">
           <div className="label">Five-minute tour</div>
           <ol className="mt-7 space-y-3">
             {STEPS.map((stepDef, i) => {
@@ -201,16 +202,16 @@ export default async function WelcomePage({
         </aside>
 
         {/* Step body */}
-        <section className="flex-1 px-16 py-20 flex flex-col">
+        <section className="flex-1 px-6 sm:px-10 lg:px-16 py-12 sm:py-20 flex flex-col">
           <div className="max-w-[640px]">
             <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-copper">
               Step {current} of {STEPS.length}
             </div>
-            <h1 className="mt-5 font-display text-[42px] leading-[1.08] tracking-[-0.01em] font-normal text-ink">
+            <h1 className="mt-5 font-display text-[32px] sm:text-[42px] leading-[1.09] tracking-[-0.01em] font-normal text-ink">
               {s.title}
             </h1>
 
-            <div className="mt-10 space-y-6 text-[17px] leading-[1.7] text-ink-soft">
+            <div className="mt-8 sm:mt-10 space-y-6 text-[16px] sm:text-[17px] leading-[1.7] text-ink-soft">
               {s.body}
             </div>
 

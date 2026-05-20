@@ -12,24 +12,27 @@ const THIS_MONTH = [
 
 export default function Concierge() {
   return (
-    <div className="grid grid-cols-[1fr_320px] min-h-full">
-      <div className="px-12 py-12 max-w-[760px]">
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] min-h-full">
+      <div className="px-5 sm:px-10 lg:px-12 py-10 sm:py-12 max-w-[760px]">
         <div className="label">Stewardship &middot; Your concierge</div>
-        <h1 className="mt-3 font-display text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
+        <h1 className="mt-3 font-display text-[30px] sm:text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
           Your team.
         </h1>
         <p className="mt-4 font-display italic text-[16px] leading-[1.55] text-ink-soft max-w-[640px]">
           Three people who know your house. One message away.
         </p>
 
-        <div className="mt-12 space-y-9">
+        <div className="mt-10 sm:mt-12 space-y-9">
           {CONCIERGES.map((c) => (
-            <div key={c.name} className="flex items-start gap-6 pb-9 border-b border-rule-soft last:border-b-0">
-              <div className="h-14 w-14 rounded-full bg-paper-card border border-rule flex items-center justify-center font-display text-[15px] tracking-[0.04em] text-ink-soft shrink-0">
+            <div
+              key={c.name}
+              className="flex flex-wrap sm:flex-nowrap items-start gap-x-5 gap-y-4 pb-9 border-b border-rule-soft last:border-b-0"
+            >
+              <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-paper-card border border-rule flex items-center justify-center font-display text-[14px] sm:text-[15px] tracking-[0.04em] text-ink-soft shrink-0">
                 {c.initials}
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-display text-[20px] tracking-[-0.005em] text-ink">{c.name}</div>
+              <div className="flex-1 min-w-[180px]">
+                <div className="font-display text-[19px] sm:text-[20px] tracking-[-0.005em] text-ink">{c.name}</div>
                 <div className="text-[10px] tracking-[0.22em] uppercase text-copper mt-1">{c.role}</div>
                 <p className="mt-3 text-[14px] leading-[1.65] text-ink-soft max-w-[480px]">{c.bio}</p>
                 <div className="mt-4 text-[11px] tracking-[0.04em] text-mute font-mono">
@@ -62,7 +65,7 @@ export default function Concierge() {
       </div>
 
       {/* Recent thread */}
-      <aside className="border-l border-rule-soft bg-paper-soft px-7 py-12">
+      <aside className="border-t lg:border-t-0 lg:border-l border-rule-soft bg-paper-soft px-5 sm:px-7 py-10 lg:py-12">
         <div className="label">Recent thread</div>
         <p className="mt-3 text-[11px] text-mute font-display italic">
           Messages stay quiet here. No email, no Slack.

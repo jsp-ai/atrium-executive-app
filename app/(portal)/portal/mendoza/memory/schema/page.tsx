@@ -37,7 +37,7 @@ export default function SchemaViewer() {
   const totalConditional = CONDITIONAL.length;
 
   return (
-    <div className="px-12 py-12 max-w-[920px]">
+    <div className="px-5 sm:px-10 lg:px-12 py-10 sm:py-12 max-w-[920px]">
       <Link
         href={`/portal/${ACCOUNT.slug}/memory`}
         className="text-[10px] uppercase tracking-[0.22em] text-mute hover:text-ink transition-colors duration-150"
@@ -46,7 +46,7 @@ export default function SchemaViewer() {
       </Link>
 
       <div className="mt-10 label">Schema</div>
-      <h1 className="mt-3 font-display text-[36px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
+      <h1 className="mt-3 font-display text-[30px] sm:text-[36px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
         The Mendoza family schema.
       </h1>
       <p className="mt-4 font-display italic text-[16px] leading-[1.55] text-ink-soft max-w-[680px]">

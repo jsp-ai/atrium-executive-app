@@ -61,7 +61,7 @@ export default function ActivityFilter({
   return (
     <div>
       {/* Filters */}
-      <div className="flex flex-wrap items-center gap-3 text-[10px] tracking-[0.18em] uppercase">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-3 text-[10px] tracking-[0.18em] uppercase">
         <FilterPill
           label="All authors"
           active={actor === null}
@@ -75,14 +75,14 @@ export default function ActivityFilter({
             onClick={() => setActor(a)}
           />
         ))}
-        <div className="ml-auto flex items-center gap-2.5 text-[11px] normal-case tracking-normal">
+        <div className="w-full sm:w-auto sm:ml-auto flex items-center gap-2.5 text-[11px] normal-case tracking-normal">
           <span className="font-display italic text-mute">search</span>
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="page, action, or word…"
-            className="bg-transparent border-0 border-b border-rule focus:border-ink outline-none py-1 px-2 font-display text-[13px] text-ink placeholder:text-mute-soft w-[220px]"
+            className="flex-1 sm:flex-none bg-transparent border-0 border-b border-rule focus:border-ink outline-none py-1 px-2 font-display text-[13px] text-ink placeholder:text-mute-soft sm:w-[220px]"
           />
         </div>
       </div>
@@ -109,26 +109,25 @@ export default function ActivityFilter({
             <div className="label">{day}</div>
             <ul className="mt-5 divide-y divide-rule-soft border-t border-rule-soft">
               {list.map((a, i) => (
-                <li
-                  key={i}
-                  className="py-5 grid grid-cols-[110px_140px_90px_1fr_auto] gap-6 items-baseline text-[13px]"
-                >
-                  <span className="font-mono text-[11px] text-mute-soft">
-                    {a.ts.split(" · ")[1]}
-                  </span>
-                  <span className="font-mono text-[11px] text-copper">
-                    {a.actor}
-                  </span>
-                  <span className="text-ink-soft">{a.action}</span>
-                  <Link
-                    href={`/portal/${accountSlug}/memory/${a.target}`}
-                    className="font-display text-[14px] text-ink hover:text-copper truncate"
-                  >
-                    [[{a.target}]]
-                  </Link>
-                  <span className="text-mute italic font-display text-[12px] max-w-[280px] truncate">
+                <li key={i} className="py-5 text-[13px]">
+                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                    <span className="font-mono text-[11px] text-mute-soft">
+                      {a.ts.split(" · ")[1]}
+                    </span>
+                    <span className="font-mono text-[11px] text-copper">
+                      {a.actor}
+                    </span>
+                    <span className="text-ink-soft text-[12px]">{a.action}</span>
+                    <Link
+                      href={`/portal/${accountSlug}/memory/${a.target}`}
+                      className="font-display text-[14px] text-ink hover:text-copper"
+                    >
+                      [[{a.target}]]
+                    </Link>
+                  </div>
+                  <div className="mt-1 text-mute italic font-display text-[12px]">
                     {a.note}
-                  </span>
+                  </div>
                 </li>
               ))}
             </ul>

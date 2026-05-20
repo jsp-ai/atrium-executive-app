@@ -8,7 +8,7 @@ export const metadata = {
 export default function PortalLanding() {
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="px-12 py-7 flex items-center justify-between bg-paper">
+      <header className="px-6 sm:px-12 py-7 flex items-center justify-between bg-paper">
         <Link
           href="/"
           className="font-display text-[20px] tracking-[0.02em] text-ink hover:text-copper transition-colors duration-150"
@@ -18,7 +18,7 @@ export default function PortalLanding() {
         <div className="label-mute">Client area</div>
       </header>
 
-      <main className="flex-1 flex items-center justify-center px-12 py-24">
+      <main className="flex-1 flex items-center justify-center px-6 sm:px-12 py-16 sm:py-24">
         <div className="max-w-[560px]">
           <div className="label">Atrium &middot; Client area</div>
           <h1 className="mt-6 font-display text-[40px] leading-[1.08] tracking-[-0.01em] font-normal text-ink">

@@ -6,9 +6,9 @@ import RepositoryActions from "@/components/portal/RepositoryActions";
 
 export default function Settings() {
   return (
-    <div className="px-12 py-12 max-w-[820px]">
+    <div className="px-5 sm:px-10 lg:px-12 py-10 sm:py-12 max-w-[820px]">
       <div className="label">Stewardship &middot; Members & access</div>
-      <h1 className="mt-3 font-display text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
+      <h1 className="mt-3 font-display text-[30px] sm:text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
         Who can read your house.
       </h1>
       <p className="mt-4 font-display italic text-[16px] leading-[1.55] text-ink-soft max-w-[640px]">
@@ -19,25 +19,26 @@ export default function Settings() {
         <div className="label-mute mb-4">Members</div>
         <ul className="divide-y divide-rule-soft border-y border-rule-soft">
           {MEMBERS.map((m) => (
-            <li
-              key={m.name}
-              className="grid grid-cols-[1fr_220px_100px_auto] gap-6 py-4 items-baseline"
-            >
-              {m.link ? (
-                <Link
-                  href={`/portal/${ACCOUNT.slug}/memory/${m.link}`}
-                  className="font-display text-[15px] tracking-[-0.005em] text-ink hover:text-copper transition-colors duration-150"
-                >
-                  {m.name}
-                </Link>
-              ) : (
-                <div className="font-display text-[15px] tracking-[-0.005em] text-ink">
-                  {m.name}
-                </div>
-              )}
-              <div className="text-[11px] tracking-[0.18em] uppercase text-copper">{m.role}</div>
-              <div className="text-[11px] font-mono text-mute">{m.lastSeen}</div>
-              <MemberManageButton name={m.name} />
+            <li key={m.name} className="py-4">
+              <div className="flex items-baseline justify-between gap-4">
+                {m.link ? (
+                  <Link
+                    href={`/portal/${ACCOUNT.slug}/memory/${m.link}`}
+                    className="font-display text-[15px] tracking-[-0.005em] text-ink hover:text-copper transition-colors duration-150"
+                  >
+                    {m.name}
+                  </Link>
+                ) : (
+                  <div className="font-display text-[15px] tracking-[-0.005em] text-ink">
+                    {m.name}
+                  </div>
+                )}
+                <MemberManageButton name={m.name} />
+              </div>
+              <div className="mt-2 flex flex-wrap items-baseline gap-x-5 gap-y-1">
+                <span className="text-[11px] tracking-[0.18em] uppercase text-copper">{m.role}</span>
+                <span className="text-[11px] font-mono text-mute">{m.lastSeen}</span>
+              </div>
             </li>
           ))}
         </ul>
@@ -54,7 +55,7 @@ export default function Settings() {
 
       <section className="mt-16">
         <div className="label-mute mb-4">Repository</div>
-        <div className="border border-rule bg-paper-card px-7 py-6 text-[13px] text-ink-soft leading-[1.7]">
+        <div className="border border-rule bg-paper-card px-6 sm:px-7 py-6 text-[13px] text-ink-soft leading-[1.7]">
           Your family&rsquo;s memory is plain markdown in a private GitHub repository named{" "}
           <span className="font-mono text-ink">atrium-wiki-mendoza</span>. You own the repository.
           <br />

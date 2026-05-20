@@ -14,19 +14,19 @@ export default function Dashboard() {
   const operating = CONCIERGES[1];
 
   return (
-    <div className="grid grid-cols-[1fr_300px] gap-0 min-h-full">
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-0 min-h-full">
       {/* Main column */}
-      <div className="px-12 py-12 max-w-[820px]">
+      <div className="px-5 sm:px-10 lg:px-12 py-10 sm:py-12 max-w-[820px]">
         {/* Search bar */}
         <DashboardSearch accountSlug={ACCOUNT.slug} />
 
-        <div className="mt-12 label">This week &middot; {WEEKLY_BRIEF.asOf}</div>
-        <h1 className="mt-3 font-display text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
+        <div className="mt-10 sm:mt-12 label">This week &middot; {WEEKLY_BRIEF.asOf}</div>
+        <h1 className="mt-3 font-display text-[30px] sm:text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
           In your house.
         </h1>
 
         {/* The composed weekly brief */}
-        <div className="mt-10 space-y-5 text-[16px] leading-[1.78] text-ink">
+        <div className="mt-9 space-y-5 text-[16px] leading-[1.78] text-ink">
           {WEEKLY_BRIEF.paragraphs.map((para, i) => (
             <p key={i}>
               {para.map((seg, j) => (
@@ -46,7 +46,7 @@ export default function Dashboard() {
           ))}
         </div>
 
-        <div className="mt-7 pt-5 border-t border-rule-soft flex justify-between items-center text-[11px] text-mute tracking-[0.02em]">
+        <div className="mt-7 pt-5 border-t border-rule-soft flex flex-wrap gap-x-4 gap-y-2 justify-between items-baseline text-[11px] text-mute tracking-[0.02em]">
           <span>
             Composed by{" "}
             <Link
@@ -66,7 +66,7 @@ export default function Dashboard() {
         </div>
 
         {/* Three cards */}
-        <div className="mt-16 grid grid-cols-3 gap-7">
+        <div className="mt-14 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-y-8 sm:gap-x-7">
           <Card title="Open questions" subtitle="From the principal">
             <ul className="space-y-3">
               {OPEN_QUESTIONS.map((q) => (
@@ -129,17 +129,17 @@ export default function Dashboard() {
         </div>
 
         {/* Activity */}
-        <div className="mt-20">
-          <div className="flex items-baseline justify-between">
+        <div className="mt-16 sm:mt-20">
+          <div className="flex items-baseline justify-between gap-4">
             <div>
               <div className="label">Recent activity</div>
-              <h2 className="mt-2 font-display text-[22px] tracking-[-0.005em] font-normal text-ink">
+              <h2 className="mt-2 font-display text-[20px] sm:text-[22px] tracking-[-0.005em] font-normal text-ink">
                 What your concierges are tending.
               </h2>
             </div>
             <Link
               href={`/portal/${ACCOUNT.slug}/activity`}
-              className="text-[11px] uppercase tracking-[0.18em] text-mute hover:text-ink"
+              className="text-[11px] uppercase tracking-[0.18em] text-mute hover:text-ink whitespace-nowrap"
             >
               Full log &rarr;
             </Link>
@@ -147,28 +147,21 @@ export default function Dashboard() {
 
           <ul className="mt-7 divide-y divide-rule-soft">
             {ACTIVITY.slice(0, 6).map((a, i) => (
-              <li
-                key={i}
-                className="py-4 flex items-baseline gap-6 text-[13px]"
-              >
-                <span className="font-mono text-[11px] text-mute-soft w-[140px] shrink-0">
-                  {a.ts}
-                </span>
-                <span className="font-mono text-[11px] text-copper w-[80px] shrink-0">
-                  {a.actor}
-                </span>
-                <span className="text-ink-soft w-[90px] shrink-0">
-                  {a.action}
-                </span>
-                <Link
-                  href={`/portal/${ACCOUNT.slug}/memory/${a.target}`}
-                  className="text-ink font-display tracking-[-0.005em] hover:text-copper"
-                >
-                  [[{a.target}]]
-                </Link>
-                <span className="text-mute italic font-display flex-1 truncate">
+              <li key={i} className="py-4 text-[13px]">
+                <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                  <span className="font-mono text-[11px] text-mute-soft">{a.ts}</span>
+                  <span className="font-mono text-[11px] text-copper">{a.actor}</span>
+                  <span className="text-ink-soft text-[12px]">{a.action}</span>
+                  <Link
+                    href={`/portal/${ACCOUNT.slug}/memory/${a.target}`}
+                    className="text-ink font-display tracking-[-0.005em] hover:text-copper"
+                  >
+                    [[{a.target}]]
+                  </Link>
+                </div>
+                <div className="mt-1 text-mute italic font-display text-[12px]">
                   {a.note}
-                </span>
+                </div>
               </li>
             ))}
           </ul>
@@ -176,7 +169,7 @@ export default function Dashboard() {
       </div>
 
       {/* Right rail */}
-      <aside className="border-l border-rule-soft bg-paper-soft px-7 py-12">
+      <aside className="border-t lg:border-t-0 lg:border-l border-rule-soft bg-paper-soft px-5 sm:px-7 py-10 lg:py-12">
         <div className="label">Your concierge</div>
 
         <div className="mt-5 flex items-start gap-3.5">

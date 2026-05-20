@@ -32,21 +32,21 @@ export default async function AskPage({
   }
 
   return (
-    <div className="grid grid-cols-[1fr_280px] min-h-full">
-      <div className="px-12 py-12 max-w-[860px]">
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] min-h-full">
+      <div className="px-5 sm:px-10 lg:px-12 py-10 sm:py-12 max-w-[860px]">
         <div className="label">The interface &middot; Ask</div>
-        <h1 className="mt-3 font-display text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
+        <h1 className="mt-3 font-display text-[30px] sm:text-[34px] leading-[1.12] tracking-[-0.01em] font-normal text-ink">
           Ask your house anything.
         </h1>
         <p className="mt-3 font-display italic text-[15px] text-mute max-w-[640px]">
           Plain language. Every claim cites its source. No new app to learn.
         </p>
 
-        <div className="mt-12 space-y-14">
+        <div className="mt-10 sm:mt-12 space-y-12 sm:space-y-14">
           {/* The principal's question */}
           <div>
             <div className="label-mute mb-3">You</div>
-            <p className="font-display italic text-[22px] leading-[1.4] text-ink tracking-[-0.005em]">
+            <p className="font-display italic text-[19px] sm:text-[22px] leading-[1.4] text-ink tracking-[-0.005em]">
               {userQuery}
             </p>
             {answer && (
@@ -92,7 +92,7 @@ export default async function AskPage({
       </div>
 
       {/* History sidebar */}
-      <aside className="border-l border-rule-soft bg-paper-soft px-7 py-12">
+      <aside className="border-t lg:border-t-0 lg:border-l border-rule-soft bg-paper-soft px-5 sm:px-7 py-10 lg:py-12">
         <div className="label">Today&rsquo;s conversation</div>
         <p className="mt-3 text-[11px] text-mute font-display italic leading-[1.55]">
           Your questions today, in order. Click any to revisit.
