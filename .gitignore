@@ -36,6 +36,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# inquiry form local log (Phase 1 stub; moves to Postgres in Phase 2)
+.inquiries/
+
+# editor + os
+.idea/
+.vscode/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

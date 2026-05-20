@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
+@theme {
+  /* Atrium palette — cream paper, ink, copper */
+  --color-paper: #F4EFE7;
+  --color-paper-soft: #EFE9DD;
+  --color-paper-card: #FAF5EC;
+  --color-ink: #0E1116;
+  --color-ink-soft: #3A3F47;
+  --color-mute: #807868;
+  --color-mute-soft: #A89F8E;
+  --color-copper: #B96F3D;
+  --color-copper-soft: #C98859;
+  --color-rule: #D8CFC1;
+  --color-rule-soft: #E5DECF;
+
+  /* Typography */
+  --font-display: var(--font-fraunces), "Fraunces", Georgia, serif;
+  --font-sans: var(--font-inter), "Inter Tight", -apple-system, sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", "SF Mono", monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+::selection {
+  background: var(--color-copper);
+  color: var(--color-paper);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Editorial small-caps label */
+.label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-copper);
 }
+
+.label-mute {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-mute);
+}
+
+/* Citation pill */
+.cite {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 2px 7px;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  border: 1px solid var(--color-copper);
+  border-radius: 1px;
+  vertical-align: 1px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 120ms ease;
+  font-family: var(--font-sans);
+}
+.cite:hover {
+  background: var(--color-copper);
+  color: var(--color-paper);
+}
+
+/* Pull quote */
+.pull {
+  margin: 28px 0;
+  padding: 4px 0 4px 22px;
+  border-left: 2px solid var(--color-copper);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+
+/* Rule helper */
+.rule { border-color: var(--color-rule); }
